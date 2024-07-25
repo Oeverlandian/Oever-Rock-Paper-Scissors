@@ -1,171 +1,82 @@
 import random
 
-def returnToChoose():
-    chooseType()
-
-def chooseType():
-    """Prompts the user to choose a type of Rock Paper Scissors game."""
-
-    print("Which type of rock paper scissors do you want to play?")
-    print("1. Rock-Paper-Scissors")
-    print("2. Rock-Paper-Scissors-Well (Not available yet)")
-    print("3. Rock-Paper-Scissors-Fire-Water (Not available yet)")
-
+def main_menu():
+    """Displays the main menu and handles user choice."""
     while True:
-        choice = input().strip()
+        print("Which type of Rock-Paper-Scissors do you want to play?")
+        print("1. Rock-Paper-Scissors")
+        print("2. Rock-Paper-Scissors-Well (Not available yet)")
+        print("3. Rock-Paper-Scissors-Fire-Water (Not available yet)")
+        print("4. Exit")
+
+        choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            computerChoiceRPS()
-            rockPaperScissors()
-            break
+            play_rock_paper_scissors()
         elif choice == '2':
             print("Rock-Paper-Scissors-Well is not available yet.")
         elif choice == '3':
             print("Rock-Paper-Scissors-Fire-Water is not available yet.")
+        elif choice == '4':
+            print("Exiting the program. Goodbye!")
+            exit()
         else:
-            print("That is not a valid number, input a number from 1 to 3")
+            print("Invalid input. Please enter a number from 1 to 4.")
 
-def computerChoiceRPS():
-    computerInt = random.randint(1,3)
-    if computerInt == 1:
-        computerChoiceRPS = 1
-        
-def rockPaperScissors():
+def get_computer_choice():
+    """Gets the computer's choice."""
+    return random.choice(['rock', 'paper', 'scissors'])
+
+def play_rock_paper_scissors():
+    """Handles the Rock-Paper-Scissors game logic."""
     while True:
-        print("""What do you choose?
-            1. Rock
-            2. Paper
-            3. Scissors
-            4. Return back to menu
-            """)
-        playerChoice = input().strip().lower()
-        
-        #tied outcomes
-        if (playerChoice == 1 or playerChoice == 'rock') and (computerChoiceRPS == 1 or computerChoiceRPS == 'rock'):
-            print("You chose rock and the computer chose rock, you tied!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
-        elif (playerChoice == 2 or playerChoice == 'paper') and (computerChoiceRPS == 2 or computerChoiceRPS == 'paper'):
-            print("You chose scissors and the computer chose scissors, you tied!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
-        elif (playerChoice == 3 or playerChoice == 'scicssors') and (computerChoiceRPS == 2 or computerChoiceRPS == 'scissors'):
-            print("You chose scissors and the computer chose scissors, you tied!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
+        print("\nWhat do you choose?")
+        print("1. Rock")
+        print("2. Paper")
+        print("3. Scissors")
+        print("4. Return to menu")
 
-        #winning outcomes
-        elif (playerChoice == 1 or playerChoice == 'rock') and (computerChoiceRPS == 3 or computerChoiceRPS == 'scissors'):
-            print("You chose rock and the computer chose scissors, you won!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
-        elif (playerChoice == 2 or playerChoice == 'paper') and (computerChoiceRPS == 1 or computerChoiceRPS == 'rock'):
-            print("You chose paper and the computer chose rock, you won!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
-        elif (playerChoice == 3 or playerChoice == 'scissors') and (computerChoiceRPS == 2 or computerChoiceRPS == 'paper'):
-            print("You chose scissors and the computer chose paper, you won!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
+        player_choice = input("Enter your choice: ").strip().lower()
 
-        #losing outcomes
-        elif (playerChoice == 1 or playerChoice == 'rock') and (computerChoiceRPS == 2 or computerChoiceRPS == 'paper'):
-            print("You chose rock and the computer chose paper, you lost!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
-        elif (playerChoice == 2 or playerChoice == 'paper') and (computerChoiceRPS == 3 or computerChoiceRPS == 'scissors'):
-            print("You chose rock and the computer chose paper, you lost!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
-        elif (playerChoice == 3 or playerChoice == 'rock') and (computerChoiceRPS == 1 or computerChoiceRPS == 'paper'):
-            print("You chose rock and the computer chose paper, you lost!")
-            #return to menu choice
-            print("Do you want to return to the menu? Y/N")
-            returnChoice = input().strip().lower()
-            if returnChoice == "y" or "yes":
-                print("Returning you to the main menu!")
-                returnToChoose()
-            if returnChoice == "n" or "no":
-                print("Terminating program.")
-                exit()
-
-        #return to menu
-        elif playerChoice == 4 or "return" or "return back to menu":
-            chooseType()
-
-        #error
+        if player_choice in ['1', 'rock']:
+            player_choice = 'rock'
+        elif player_choice in ['2', 'paper']:
+            player_choice = 'paper'
+        elif player_choice in ['3', 'scissors']:
+            player_choice = 'scissors'
+        elif player_choice in ['4', 'return to menu', 'return']:
+            return
         else:
-            print("Invalid input or error.")
-            print("Do you want to return to the start of the RPS game? Y/N")
-            rerun = input().strip().lower()
-            if rerun == "y" or "yes":
-                print("Restarting program.")
-                rockPaperScissors()
-            elif rerun == "n" or "no":
-                print("Terminating program")
-                exit()
-            else:
-                print("Invalid input, terminating program.")
-                exit()
-    
-#WIP def rockPaperScissorsWell():
+            print("Invalid input. Please choose 1, 2, 3, or 4.")
+            continue
 
-#WIP def rockPaperScissorsFireWater():
+        computer_choice = get_computer_choice()
 
-chooseType()
+        if player_choice == computer_choice:
+            print(f"You chose {player_choice} and the computer chose {computer_choice}. It's a tie!")
+        elif (player_choice == 'rock' and computer_choice == 'scissors') or \
+             (player_choice == 'paper' and computer_choice == 'rock') or \
+             (player_choice == 'scissors' and computer_choice == 'paper'):
+            print(f"You chose {player_choice} and the computer chose {computer_choice}. You win!")
+        else:
+            print(f"You chose {player_choice} and the computer chose {computer_choice}. You lose!")
+
+        if not play_again():
+            print("Returning to the main menu.")
+            return
+
+def play_again():
+    """Asks the user if they want to play again."""
+    while True:
+        choice = input("Do you want to play again? (Y/N): ").strip().lower()
+        if choice in ['y', 'yes']:
+            return True
+        elif choice in ['n', 'no']:
+            return False
+        else:
+            print("Invalid input. Please enter 'Y' for yes or 'N' for no.")
+
+if __name__ == "__main__":
+    main_menu()
+
+#End of program
